@@ -30,7 +30,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex flex-col sm:flex-row justify-between items-center py-2 sm:py-3 md:py-3 lg:py-4 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-transparent absolute w-full top-0 z-50">
+    <nav className="flex flex-col sm:flex-row justify-between items-center py-3 sm:py-3 md:py-3 lg:py-4 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-transparent absolute w-full top-0 z-50">
       {/* Logo and Hamburger */}
       <div className="flex justify-between items-center w-full sm:w-auto">
         <Link 
@@ -42,7 +42,7 @@ const Navbar = () => {
           <Image 
             src={logo}
             alt="The Oasis Logo" 
-            className="h-8 xs:h-9 sm:h-8 md:h-9 lg:h-10 xl:h-11 2xl:h-12 transition-all duration-300 logo" 
+            className="h-4 xs:h-5 sm:h-8 md:h-9 lg:h-10 xl:h-11 2xl:h-12 transition-all duration-300 logo" 
             width={150}
             height={48}
             priority
@@ -88,27 +88,6 @@ const Navbar = () => {
           isMenuOpen ? 'translate-x-0' : 'translate-x-full sm:translate-x-0'
         } transition-transform duration-300 ease-in-out flex flex-col sm:flex-row`}
       >
-        {/* Close Button for Mobile - Top Right */}
-        <button
-          className="sm:hidden absolute top-4 right-4 text-white focus:outline-none focus:ring-2 focus:ring-[#D4A373] focus:ring-offset-2 focus:ring-offset-gray-900 rounded-sm z-50 p-2 transition-colors duration-200 hover:text-[#D4A373]"
-          onClick={closeMenu}
-          aria-label="Close menu"
-        >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-
         {/* Navigation Links */}
         <ul className="flex flex-col sm:flex-row list-none gap-0 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10 font-['Open_Sans',_sans-serif] h-full pt-16 sm:pt-0 px-6 sm:px-0">
           <li className="w-full sm:w-auto">
