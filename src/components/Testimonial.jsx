@@ -115,7 +115,7 @@ const Testimonial = () => {
         </div>
 
         {/* Dots Indicator */}
-        <div className="absolute bottom-2 sm:bottom-4 w-full text-center">
+        <div className="absolute bottom-2 sm:bottom-4 w-[95%] overflow-hidden text-center">
           <div className="inline-flex space-x-2">
             {testimonials.map((_, index) => (
               <button

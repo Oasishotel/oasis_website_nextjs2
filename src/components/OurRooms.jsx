@@ -67,21 +67,21 @@ const ImageSlider = ({ images, roomName, roomIndex }) => {
 
   return (
     <div 
-      className="relative w-full h-full overflow-hidden rounded-lg group"
+      className="relative  h-full overflow-hidden rounded-lg group"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
       {/* Images */}
-      <div className="relative w-full h-full">
+      <div className="relative  h-full">
         {images.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 w-full h-full transition-all duration-500 ease-in-out ${
+            className={`absolute inset-0 h-full transition-all duration-500 ease-in-out ${
               index === currentIndex 
                 ? 'opacity-100 transform translate-x-0' 
                 : index < currentIndex 
                 ? 'opacity-0 transform -translate-x-full'
-                : 'opacity-0 transform translate-x-full'
+                : 'opacity-0 transform translate-x-0'
             }`}
           >
             <Image
@@ -89,7 +89,7 @@ const ImageSlider = ({ images, roomName, roomIndex }) => {
               alt={`${roomName} - ${index + 1}`}
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
+              sizes="(max-width: 768px) , (max-width: 1024px) 66vw, 50vw"
               priority={roomIndex === 0 && index === 0}
             />
           </div>
