@@ -84,12 +84,12 @@ const Navbar = () => {
 
       {/* Navigation Links Container */}
       <div
-        className={`fixed sm:static top-0 right-0 h-screen sm:h-auto w-3/4 max-w-xs sm:w-auto bg-gray-900 sm:bg-transparent z-40 transform ${
+        className={`fixed sm:static top-0 right-0 h-full sm:h-auto w-3/4 max-w-xs sm:w-auto bg-gray-900 sm:bg-transparent z-40 transform ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full sm:translate-x-0'
         } transition-transform duration-300 ease-in-out flex flex-col sm:flex-row`}
       >
         {/* Navigation Links */}
-        <ul className="flex flex-col sm:flex-row items-center list-none sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8 font-open-sans h-full pt-20 sm:pt-0 px-6 sm:px-0">
+        <ul className="flex flex-col sm:flex-row items-center list-none sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8 font-open-sans flex-grow sm:flex-grow-0 pt-20 sm:pt-0 px-6 sm:px-0">
           {['About Us', 'Our Rooms', 'Amenities', 'Contact'].map((item, index) => {
             const href = `#${item.toLowerCase().replace(' ', '-')}`;
             return (
@@ -107,8 +107,8 @@ const Navbar = () => {
           })}
         </ul>
 
-        {/* Mobile Book Now Button - Fixed to be always visible */}
-        <div className="mt-auto p-6 pb-10 sm:hidden border-t border-gray-700">
+        {/* Mobile Book Now Button - Fixed positioning */}
+        <div className="p-6 sm:hidden border-t border-gray-700 mt-auto">
           <a
             href="https://direct-book.com/properties/OasisHotel"
             className="flex items-center justify-center py-3 px-6 bg-[#D4A373] text-white no-underline font-open-sans text-base font-semibold rounded-sm hover:bg-[#C29360] focus:bg-[#C29360] focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 w-full"
