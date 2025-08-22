@@ -107,8 +107,8 @@ const Navbar = () => {
           })}
         </ul>
 
-        {/* Mobile Book Now Button */}
-        <div className="mt-auto p-6 sm:hidden border-t border-gray-700">
+        {/* Mobile Book Now Button - Fixed to be always visible */}
+        <div className="mt-auto p-6 pb-10 sm:hidden border-t border-gray-700">
           <a
             href="https://direct-book.com/properties/OasisHotel"
             className="flex items-center justify-center py-3 px-6 bg-[#D4A373] text-white no-underline font-open-sans text-base font-semibold rounded-sm hover:bg-[#C29360] focus:bg-[#C29360] focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 w-full"

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -32,10 +32,13 @@ const rooms = [
   },
 ];
 
-// Custom Image Slider Component
+// Custom Image Slider Component with Touch Support
 const ImageSlider = ({ images, roomName, roomIndex }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [startX, setStartX] = useState(0);
+  const [endX, setEndX] = useState(0);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -44,7 +47,7 @@ const ImageSlider = ({ images, roomName, roomIndex }) => {
       setCurrentIndex(prevIndex => 
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [images.length, isAutoPlaying]);
@@ -65,14 +68,40 @@ const ImageSlider = ({ images, roomName, roomIndex }) => {
     setCurrentIndex(index);
   };
 
+  // Touch event handlers
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].clientX);
+    setIsAutoPlaying(false);
+  };
+
+  const handleTouchMove = (e) => {
+    setEndX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (startX - endX > 50) {
+      // Swipe left
+      goToNext();
+    } else if (endX - startX > 50) {
+      // Swipe right
+      goToPrev();
+    }
+    // Reset auto-play after a short delay
+    setTimeout(() => setIsAutoPlaying(true), 5000);
+  };
+
   return (
     <div 
-      className="relative  h-full overflow-hidden rounded-lg group"
+      className="relative h-full overflow-hidden rounded-lg group"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      ref={sliderRef}
     >
       {/* Images */}
-      <div className="relative  h-full">
+      <div className="relative h-full">
         {images.map((image, index) => (
           <div
             key={index}
@@ -81,7 +110,7 @@ const ImageSlider = ({ images, roomName, roomIndex }) => {
                 ? 'opacity-100 transform translate-x-0' 
                 : index < currentIndex 
                 ? 'opacity-0 transform -translate-x-full'
-                : 'opacity-0 transform translate-x-0'
+                : 'opacity-0 transform translate-x-full'
             }`}
           >
             <Image
@@ -89,7 +118,7 @@ const ImageSlider = ({ images, roomName, roomIndex }) => {
               alt={`${roomName} - ${index + 1}`}
               fill
               className="object-cover"
-              sizes="(max-width: 768px) , (max-width: 1024px) 66vw, 50vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
               priority={roomIndex === 0 && index === 0}
             />
           </div>
