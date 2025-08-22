@@ -84,37 +84,31 @@ const Navbar = () => {
 
       {/* Navigation Links Container */}
       <div
-        className={`fixed sm:static top-0 right-0 h-screen sm:h-auto w-3/4 max-w-xs sm:w-auto bg-gray-900 sm:bg-transparent z-40 transform ${
+        className={`fixed sm:static top-0 right-0 h-full sm:h-auto w-3/4 max-w-xs sm:w-auto bg-gray-900 sm:bg-transparent z-40 transform ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full sm:translate-x-0'
         } transition-transform duration-300 ease-in-out flex flex-col sm:flex-row overflow-y-auto sm:overflow-visible`}
-        style={{ 
-          paddingBottom: isMenuOpen ? 'env(safe-area-inset-bottom)' : '0',
-          maxHeight: isMenuOpen ? '100vh' : 'auto'
-        }}
       >
         {/* Navigation Links */}
-        <div className="flex flex-col sm:flex-row flex-grow sm:flex-grow-0">
-          <ul className="flex flex-col sm:flex-row items-center list-none sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8 font-open-sans pt-20 sm:pt-0 px-6 sm:px-0">
-            {['About Us', 'Our Rooms', 'Amenities', 'Contact'].map((item, index) => {
-              const href = `#${item.toLowerCase().replace(' ', '-')}`;
-              return (
-                <li key={index} className="w-full sm:w-auto whitespace-nowrap">
-                  <Link
-                    href={href}
-                    onClick={closeMenu}
-                    className="text-white no-underline hover:text-[#D4A373] focus:text-[#D4A373] focus:outline-none transition-colors duration-300 block py-4 sm:py-2 border-b border-gray-700 sm:border-0 text-lg sm:text-base md:text-lg font-medium"
-                    aria-label={`${item} section`}
-                  >
-                    {item}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <ul className="flex flex-col sm:flex-row items-center list-none sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8 font-open-sans pt-20 sm:pt-0 px-6 sm:px-0">
+          {['About Us', 'Our Rooms', 'Amenities', 'Contact'].map((item, index) => {
+            const href = `#${item.toLowerCase().replace(' ', '-')}`;
+            return (
+              <li key={index} className="w-full sm:w-auto whitespace-nowrap">
+                <Link
+                  href={href}
+                  onClick={closeMenu}
+                  className="text-white no-underline hover:text-[#D4A373] focus:text-[#D4A373] focus:outline-none transition-colors duration-300 block py-4 sm:py-2 border-b border-gray-700 sm:border-0 text-lg sm:text-base md:text-lg font-medium"
+                  aria-label={`${item} section`}
+                >
+                  {item}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
 
-        {/* Mobile Book Now Button - Positioned for accessibility */}
-        <div className="p-6 sm:hidden border-t border-gray-700 bg-gray-900 mt-8">
+        {/* Mobile Book Now Button - Positioned right after navigation links */}
+        <div className="px-6 pt-6 pb-8 sm:hidden">
           <a
             href="https://direct-book.com/properties/OasisHotel"
             className="flex items-center justify-center py-3 px-6 bg-[#D4A373] text-white no-underline font-open-sans text-base font-semibold rounded-sm hover:bg-[#C29360] focus:bg-[#C29360] focus:outline-none focus:ring-2 focus:ring-white transition-all duration-300 w-full"
