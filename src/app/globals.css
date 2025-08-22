@@ -46,3 +46,15 @@
 .read-the-docs {
   color: #888;
 }
+
+@theme {
+  /* ... other theme variables ... */
+  --font-playfair-display: 'Playfair Display', serif; /* Use the exact font name from Google Fonts */
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+
+  /* Optionally, you can also map these to Tailwind's default font families */
+  --font-heading: var(--font-playfair-display);
+  --font-body: var(--font-open-sans);
+  --font-sans: var(--font-open-sans); /* Overriding default sans font if desired */
+}
